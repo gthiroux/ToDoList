@@ -3,22 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>FocusMind</title>
   </head>
-  <body style="background-color: white">
-    <ul id="taskList"></ul>
-    <input id="newTaskName" type="text" />
-    <input id="newTaskDate" type="date" />
-    <select name="" id="newTaskType">
-      <option value="simple">Simple</option>
-      <option value="appoitment">Appoitment</option>
-    </select>
-    <button id="newTaskValidate">Valider</button>
+  
+  <body>
+     <header>
+        <h1>FocusMind</h1>
+        <h3 class="slogan">La todo List intelligente qui te permet de te focus sur ce qui est vraiment important</p>
+    </header>
+     <div id="addTask">
+    
+        <input id="newTaskName" type="text" placeholder="Ajouter une nouvelle tâche" />
+        <input id="newTaskDate" type="date" />
+        <select name="" id="newTaskType">
+            <option value="simple">Tâche Simple </option>
+            <option value="appointment">Rendez-vous </option>
+            <option value="note">Note</option>
+        </select>
+        <div id="typeTask">
+        </div>
+        <button id="newTaskValidate" type="submit">Valider</button>
+    </div>
+     <!-- <input id="newTypeTaskName" type="text" placeholder="Ajouter un nouveau type" />
+    <button id="newTypeTaskValidate" type="submit">Valider</button>
+     <select name="optionTypeTask" id="typeTask"></select> -->
+    <ul id="taskList"></ul> 
     <script type="module" src="assets/js/script.js"></script>
-    <style>
-      li {
-        display: flex;
-      }
-    </style>
   </body>
 </html>

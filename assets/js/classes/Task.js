@@ -1,3 +1,5 @@
+import Interface from "./Interface.js";
+
 export default class Task {
   static idCount = 1;
 
@@ -5,7 +7,9 @@ export default class Task {
   name;
   checked = false;
   checkbox;
-  /**Construction d'une tâche */
+  deleted;
+
+  /**Construction of task */
   constructor(data) {
     this.id = Task.idCount;
     Task.idCount++;
@@ -17,6 +21,6 @@ export default class Task {
     /** Ecoute de la checkbox pour savoir si elle est cliqué ou non  */
     checkbox.addEventListener("click", () => this.toggle());
   }
-  /** Lors du clic de la checkbox, on change la valeur de checked (par défaut à false) en son contraire */
+  /** If the checkbox is checked then the value of checked take the opposite*/
   toggle = () => (this.checked = !this.checked);
 }
