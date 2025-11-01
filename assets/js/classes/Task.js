@@ -1,5 +1,3 @@
-import Interface from "./Interface.js";
-
 export default class Task {
   static idCount = 1;
 
@@ -8,10 +6,11 @@ export default class Task {
   checked = false;
   checkbox;
   deleted;
+  modification;
 
   /**Construction of task */
   constructor(data) {
-    this.id = Task.idCount;
+    this.id = data.id;
     Task.idCount++;
     this.name = data.name;
 
