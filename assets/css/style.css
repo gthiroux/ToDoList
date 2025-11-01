@@ -70,6 +70,7 @@ input {
 /*  Task list */
 li {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   width: 90%;
   margin: 2rem;
@@ -80,7 +81,7 @@ li {
 li div {
   display: flex;
   margin: 1rem;
-  width: 80%;
+  width: 95%;
   align-items: center;
 }
 input[type="checkbox"] {

@@ -1,5 +1,6 @@
 export default class Interface {
   static listHTML = document.getElementById("taskList");
+  static validateListHTML = document.getElementById("checkedTaskList");
 
   static handlerCreateTask(handler) {
     /**Récupération des données venant de l'HTML */
@@ -31,9 +32,11 @@ export default class Interface {
     tasks.forEach((task) => {
       const li = document.createElement("li");
 
+      const divTask = document.createElement("div");
+      divTask.classList.add = "listTask";
+
       const div = document.createElement("div");
       div.setAttribute("id", "task" + task.id);
-      li.appendChild(div);
 
       div.appendChild(task.checkbox);
 
@@ -47,8 +50,9 @@ export default class Interface {
       p.textContent = task.name;
       div.appendChild(p);
 
+      divTask.appendChild(div);
       /**
-       * Creation of the button delete to delete the task(this) thanks to the function onDelete()
+       * Creation of the button modification to modify the task(this) thanks to the function onModification()
        */
       const modified = document.createElement("button");
 
@@ -56,9 +60,10 @@ export default class Interface {
       imageModified.src = "./assets/img/pen.png";
       modified.classList.add("modification");
       task.modification = modified;
-      modified.appendChild(imageModified);
 
-      li.appendChild(modified);
+      modified.appendChild(imageModified);
+      divTask.appendChild(modified);
+
       modified.addEventListener("click", () => onModification(task));
       /**
        * Creation of the button delete to delete the task(this) thanks to the function onDelete()
@@ -69,10 +74,23 @@ export default class Interface {
       imageDelete.src = "./assets/img/trash.png";
       deleted.classList.add("delete");
       task.deleted = deleted;
-      deleted.appendChild(imageDelete);
 
-      li.appendChild(deleted);
+      deleted.appendChild(imageDelete);
+      divTask.appendChild(deleted);
+
       deleted.addEventListener("click", () => onDelete(task));
+
+      li.appendChild(divTask);
+
+      /** Modification element  */
+      const divModification = document.createElement("div");
+      divModification.setAttribute("id", "divModification");
+
+      divModification.appendChild(task.inputModify);
+
+      divModification.appendChild(task.buttonModify);
+
+      li.appendChild(divModification);
 
       Interface.listHTML.appendChild(li);
     });
