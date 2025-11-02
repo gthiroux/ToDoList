@@ -84,6 +84,14 @@ li div {
   width: 95%;
   align-items: center;
 }
+.listTask div p {
+  margin-right: 1rem;
+}
+.dateTask {
+  color: rgb(148, 55, 55);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
 input[type="checkbox"] {
   margin: 0;
 }
@@ -95,10 +103,34 @@ input[type="checkbox"] {
   font-style: normal;
   font-size: 1.3rem;
 }
-button.delete {
+
+button.delete,
+button.modification {
   background: none;
   border: none;
+  margin: 1rem;
 }
 button.delete img {
   width: 50%;
+}
+
+#divModification {
+  width: 98%;
+  justify-content: space-between;
+}
+#divModification input {
+  width: 30rem;
+  height: 2rem;
+  margin: 1rem;
+}
+#divModification button {
+  margin: 0;
+  padding: 0.5rem;
+  background-color: white;
+  color: rgb(148, 55, 55);
+  font-variant: small-caps;
+  font-weight: 600;
+  font-size: 20px;
+  border: rgb(148, 55, 55) solid 0.1rem;
+  border-radius: 0.5rem;
 }

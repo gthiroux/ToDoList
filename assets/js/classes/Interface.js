@@ -8,18 +8,22 @@ export default class Interface {
     const newTaskType = document.getElementById("newTaskType");
     const newTaskDate = document.getElementById("newTaskDate");
     const newTaskValidate = document.getElementById("newTaskValidate");
+
     var id = 1;
+    var indexTasks = 1;
     /** Ecoute sur l'input des tâches */
     newTaskValidate.addEventListener("click", () => {
       /** Création d'un objet data qui regroupe toutes les informations nécessaires pour les tratier avec d'autres fonctions */
       const data = {
         id: id,
+        index: indexTasks,
         name: newTaskName.value,
         type: newTaskType.value,
         opt: {
           date: newTaskDate.value,
         },
       };
+      indexTasks++;
       id++;
       newTaskName.value = "";
       /**fonction callback dans App.js qui renvoie data */
@@ -33,7 +37,7 @@ export default class Interface {
       const li = document.createElement("li");
 
       const divTask = document.createElement("div");
-      divTask.classList.add = "listTask";
+      divTask.classList.add("listTask");
 
       const div = document.createElement("div");
       div.setAttribute("id", "task" + task.id);
@@ -42,8 +46,10 @@ export default class Interface {
 
       const index = document.createElement("p");
       index.classList.add("indexTasks");
-      index.textContent = "#" + task.id;
+      index.textContent = "#" + task.index;
       div.appendChild(index);
+
+      div.appendChild(task.date);
 
       const p = document.createElement("p");
       p.setAttribute("id", "nameTask" + task.id);

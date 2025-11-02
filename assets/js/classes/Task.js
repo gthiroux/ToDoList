@@ -2,10 +2,12 @@ export default class Task {
   static idCount = 1;
 
   id;
+  index;
   name;
   checked = false;
   checkbox;
   deleted;
+  date;
   modification;
   buttonModify;
   inputModify;
@@ -13,6 +15,7 @@ export default class Task {
   /**Construction of task */
   constructor(data) {
     this.id = data.id;
+    this.index = data.index;
     Task.idCount++;
     this.name = data.name;
 
@@ -21,6 +24,11 @@ export default class Task {
     this.checkbox = checkbox;
     /** Ecoute de la checkbox pour savoir si elle est cliqué ou non  */
     checkbox.addEventListener("click", () => this.toggle());
+
+    const date = document.createElement("p");
+    date.textContent = "";
+    this.date = date;
+    date.hidden = true;
 
     const inputModify = document.createElement("input");
     inputModify.setAttribute("type", "text");

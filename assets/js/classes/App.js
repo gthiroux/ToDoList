@@ -14,8 +14,7 @@ export default class App {
         this.tasks.push(new Task(data));
       } else if (data.type == "appointment") {
         /** Création d'un objet Task de type rendez-vous */
-        this.tasks.push(new Appoitment(data));
-      }
+        this.tasks.push(new Appoitment(data));      }
       /** Affichage de la tâche */
       Interface.displayTasks(
         this.tasks,
@@ -28,13 +27,23 @@ export default class App {
   /** Function delete task */
   delete = (task) => {
     const indexThis = this.tasks.indexOf(task);
+    let i = indexThis + 1;
+
+    this.tasks.forEach((task) => {
+      if (task.index > i) {
+        console.log("i=", i);
+        task.index = i;
+        console.log("indexTaks", Interface.indexTasks);
+        i++;
+      }
+    });
+    Interface.indexTasks = i;
     this.tasks.splice(indexThis, 1);
     Interface.displayTasks(this.tasks, (task) => this.delete(task));
   };
 
   /**function modify task */
   modify = (task) => {
-    const newNameTask = document.getElementById("nameTask" + task.id);
     task.inputModify.hidden = false;
     task.buttonModify.hidden = false;
     console.log(task.name);
