@@ -28,6 +28,14 @@ h1 {
   font-size: 40px;
   margin: 0.5rem;
 }
+h2 {
+  font-family: "Spicy Rice", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 24px;
+  margin: 0.5rem;
+  text-decoration: underline solid rgb(148, 55, 55);
+}
 
 /* add Task section */
 #addTask div,
@@ -63,9 +71,9 @@ h1 {
   border-radius: 0.5rem;
   border: none;
 }
-input {
+/* input {
   margin-bottom: 1rem;
-}
+} */
 
 /*  Task list */
 li {

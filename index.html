@@ -15,12 +15,12 @@
      <div id="addTask">
     
         <input id="newTaskName" type="text" placeholder="Ajouter une nouvelle tâche" />
-        <input id="newTaskDate" type="date" />
         <select name="" id="newTaskType">
             <option value="simple">Tâche Simple </option>
             <option value="appointment">Rendez-vous </option>
-            <option value="note">Note</option>
+            <!-- <option value="note">Note</option> -->
         </select>
+        <input id="newTaskDate" type="date" />
         <div id="typeTask">
         </div>
         <button id="newTaskValidate" type="submit">Valider</button>
@@ -28,7 +28,9 @@
      <!-- <input id="newTypeTaskName" type="text" placeholder="Ajouter un nouveau type" />
     <button id="newTypeTaskValidate" type="submit">Valider</button>
      <select name="optionTypeTask" id="typeTask"></select> -->
+    <h2>Tâches à faire : </h2>
     <ul id="taskList"></ul> 
+    <h2>Tâches faites : </h2>
     <ul id="checkedTaskList"></ul>
     <script type="module" src="assets/js/script.js"></script>
   </body>

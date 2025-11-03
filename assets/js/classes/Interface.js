@@ -31,8 +31,10 @@ export default class Interface {
     });
   }
   /** Fonction d'affichage des tâches en créant le HTML nécessaire */
-  static displayTasks(tasks, onDelete, onModification) {
+  static displayTasks(tasks, onDelete, onModification, onToggle) {
     Interface.listHTML.innerHTML = "";
+    Interface.validateListHTML.innerHTML = "";
+
     tasks.forEach((task) => {
       const li = document.createElement("li");
 
@@ -43,6 +45,8 @@ export default class Interface {
       div.setAttribute("id", "task" + task.id);
 
       div.appendChild(task.checkbox);
+      /** Ecoute de la checkbox pour savoir si elle est cliqué ou non  */
+      task.checkbox.addEventListener("click", () => onToggle(task));
 
       const index = document.createElement("p");
       index.classList.add("indexTasks");
@@ -98,7 +102,11 @@ export default class Interface {
 
       li.appendChild(divModification);
 
-      Interface.listHTML.appendChild(li);
+      if (task.checked == true) {
+        Interface.validateListHTML.appendChild(li);
+      } else {
+        Interface.listHTML.appendChild(li);
+      }
     });
   }
 }

@@ -5,6 +5,7 @@ import Task from "./Task.js";
 
 export default class App {
   tasks = [];
+  validateTask = [];
 
   constructor() {
     /**Récupération des informations sous forme d'objet des tâches dans l'interface */
@@ -14,15 +15,35 @@ export default class App {
         this.tasks.push(new Task(data));
       } else if (data.type == "appointment") {
         /** Création d'un objet Task de type rendez-vous */
-        this.tasks.push(new Appoitment(data));      }
+        this.tasks.push(new Appoitment(data));
+      }
       /** Affichage de la tâche */
       Interface.displayTasks(
         this.tasks,
         (task) => this.delete(task),
-        (task) => this.modify(task)
+        (task) => this.modify(task),
+        (task) => this.toggle(task)
       );
     });
   }
+
+  /** If the checkbox is checked then the value of checked take the opposite*/
+  toggle = (task) => {
+    task.checked = !task.checked;
+    if (task.checked == true) {
+      this.validateTask.push(task);
+      Interface.displayTasks(
+        this.validateTask,
+        (task) => this.delete(task),
+        (task) => this.modify(task),
+        (task) => this.toggle(task)
+      );
+      // this.delete(task);
+    }
+    // console.log(this.validateTask);
+    // console.log(this.tasks);
+    // console.log(task);
+  };
 
   /** Function delete task */
   delete = (task) => {
@@ -31,29 +52,35 @@ export default class App {
 
     this.tasks.forEach((task) => {
       if (task.index > i) {
-        console.log("i=", i);
+        // console.log("i=", i);
         task.index = i;
-        console.log("indexTaks", Interface.indexTasks);
+        // console.log("indexTaks", Interface.indexTasks);
         i++;
       }
     });
     Interface.indexTasks = i;
     this.tasks.splice(indexThis, 1);
-    Interface.displayTasks(this.tasks, (task) => this.delete(task));
+    Interface.displayTasks(
+      this.tasks,
+      (task) => this.delete(task),
+      (task) => this.modify(task),
+      (task) => this.toggle(task)
+    );
   };
 
   /**function modify task */
   modify = (task) => {
     task.inputModify.hidden = false;
     task.buttonModify.hidden = false;
-    console.log(task.name);
+    // console.log(task.name);
 
     task.buttonModify.addEventListener("click", () => {
       task.name = task.inputModify.value;
       Interface.displayTasks(
         this.tasks,
         (task) => this.delete(task),
-        (task) => this.modify(task)
+        (task) => this.modify(task),
+        (task) => this.toggle(task)
       );
       task.inputModify.hidden = true;
       task.buttonModify.hidden = true;
